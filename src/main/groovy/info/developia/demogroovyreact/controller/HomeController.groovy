@@ -11,6 +11,7 @@ class HomeController {
     def String home(Model model){
 
         model.addAttribute("name", "This is Manu talking")
+        model.addAttribute("surname", "Garcia Rodriguez")
 
         "home"
     }
