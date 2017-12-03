@@ -1,7 +1,5 @@
 'use strict';
 
-import { Alert } from 'reactstrap';
-
 // tag::vars[]
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -37,4 +35,3 @@ ReactDOM.render(
     document.getElementById('react')
 )
 // end::render[]
-
