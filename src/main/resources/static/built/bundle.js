@@ -53,6 +53,24 @@
 	
 	var _reactstrap = __webpack_require__(/*! reactstrap */ 1);
 	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 43);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _client = __webpack_require__(/*! ./client */ 197);
+	
+	var _client2 = _interopRequireDefault(_client);
+	
+	var _gameList = __webpack_require__(/*! ./games/game-list */ 245);
+	
+	var _gameList2 = _interopRequireDefault(_gameList);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -60,13 +78,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// tag::vars[]
-	var React = __webpack_require__(/*! react */ 3);
-	var ReactDOM = __webpack_require__(/*! react-dom */ 43);
-	var client = __webpack_require__(/*! ./client */ 197);
+	
+	
 	// end::vars[]
 	
 	// tag::app[]
-	
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
 	
@@ -84,99 +100,25 @@
 	        value: function componentDidMount() {
 	            var _this2 = this;
 	
-	            client({ method: 'GET', path: '/api/games' }).done(function (response) {
+	            (0, _client2.default)({ method: 'GET', path: '/api/games' }).done(function (response) {
 	                _this2.setState({ games: response.entity._embedded.games });
 	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return React.createElement(GameList, { games: this.state.games });
+	            return _react2.default.createElement(_gameList2.default, { games: this.state.games });
 	        }
 	    }]);
 	
 	    return App;
-	}(React.Component);
+	}(_react2.default.Component);
 	// end::app[]
-	
-	// tag::game-list[]
-	
-	
-	var GameList = function (_React$Component2) {
-	    _inherits(GameList, _React$Component2);
-	
-	    function GameList() {
-	        _classCallCheck(this, GameList);
-	
-	        return _possibleConstructorReturn(this, (GameList.__proto__ || Object.getPrototypeOf(GameList)).apply(this, arguments));
-	    }
-	
-	    _createClass(GameList, [{
-	        key: 'render',
-	        value: function render() {
-	            var games = this.props.games.map(function (game) {
-	                return React.createElement(Game, { key: game._links.self.href, game: game });
-	            });
-	            return React.createElement(
-	                'table',
-	                null,
-	                React.createElement(
-	                    'tbody',
-	                    null,
-	                    React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'th',
-	                            null,
-	                            ' Name'
-	                        )
-	                    ),
-	                    games
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return GameList;
-	}(React.Component);
-	// end::game-list[]
-	
-	// tag::game[]
-	
-	
-	var Game = function (_React$Component3) {
-	    _inherits(Game, _React$Component3);
-	
-	    function Game() {
-	        _classCallCheck(this, Game);
-	
-	        return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
-	    }
-	
-	    _createClass(Game, [{
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'tr',
-	                null,
-	                React.createElement(
-	                    'td',
-	                    null,
-	                    this.props.game.name
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Game;
-	}(React.Component);
-	// end::game[]
 	
 	// tag::render[]
 	
 	
-	ReactDOM.render(React.createElement(App, null), document.getElementById('react'));
+	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('react'));
 	// end::render[]
 
 /***/ }),
@@ -32263,7 +32205,7 @@
   \***************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process) {/** @license MIT License (c) copyright 2010-2014 original author or authors */
+	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {/** @license MIT License (c) copyright 2010-2014 original author or authors */
 	/** @author Brian Cavalier */
 	/** @author John Hann */
 	
@@ -36639,6 +36581,138 @@
 			}
 		};
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }),
+/* 245 */
+/*!****************************************!*\
+  !*** ./src/main/js/games/game-list.js ***!
+  \****************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _game = __webpack_require__(/*! ./game */ 246);
+	
+	var _game2 = _interopRequireDefault(_game);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// tag::game-list[]
+	var GameList = function (_React$Component) {
+	    _inherits(GameList, _React$Component);
+	
+	    function GameList() {
+	        _classCallCheck(this, GameList);
+	
+	        return _possibleConstructorReturn(this, (GameList.__proto__ || Object.getPrototypeOf(GameList)).apply(this, arguments));
+	    }
+	
+	    _createClass(GameList, [{
+	        key: 'render',
+	        value: function render() {
+	            var games = this.props.games.map(function (game) {
+	                return _react2.default.createElement(_game2.default, { key: game._links.self.href, game: game });
+	            });
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Name'
+	                        )
+	                    ),
+	                    games
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return GameList;
+	}(_react2.default.Component);
+	// end::game-list[]
+	
+	exports.default = GameList;
+
+/***/ }),
+/* 246 */
+/*!***********************************!*\
+  !*** ./src/main/js/games/game.js ***!
+  \***********************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// tag::game[]
+	var Game = function (_React$Component) {
+	    _inherits(Game, _React$Component);
+	
+	    function Game() {
+	        _classCallCheck(this, Game);
+	
+	        return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).apply(this, arguments));
+	    }
+	
+	    _createClass(Game, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.game.name
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Game;
+	}(_react2.default.Component);
+	// end::game[]
+	
+	exports.default = Game;
 
 /***/ })
 /******/ ]);

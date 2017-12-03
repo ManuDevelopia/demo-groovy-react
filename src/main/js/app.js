@@ -3,9 +3,10 @@
 import { Alert } from 'reactstrap';
 
 // tag::vars[]
-const React = require('react');
-const ReactDOM = require('react-dom');
-const client = require('./client');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import client from './client';
+import GameList from './games/game-list';
 // end::vars[]
 
 // tag::app[]
@@ -29,38 +30,6 @@ class App extends React.Component {
     }
 }
 // end::app[]
-
-// tag::game-list[]
-class GameList extends React.Component{
-    render() {
-        var games = this.props.games.map(game =>
-            <Game key={game._links.self.href} game={game}/>
-        );
-        return (
-            <table>
-                <tbody>
-                <tr>
-                    <th> Name</th>
-                </tr>
-                {games}
-                </tbody>
-            </table>
-        )
-    }
-}
-// end::game-list[]
-
-// tag::game[]
-class Game extends React.Component{
-    render() {
-        return (
-            <tr>
-                <td>{this.props.game.name}</td>
-            </tr>
-        )
-    }
-}
-// end::game[]
 
 // tag::render[]
 ReactDOM.render(
