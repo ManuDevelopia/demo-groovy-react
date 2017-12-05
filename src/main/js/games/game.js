@@ -1,12 +1,13 @@
 
 import React from 'react';
+import styles from './game.css';
 
 // tag::game[]
 class Game extends React.Component{
     render() {
         return (
             <tr>
-                <td>{this.props.game.name}</td>
+                <td className={styles.game}><div>{this.props.game.name}</div></td>
             </tr>
         )
     }
