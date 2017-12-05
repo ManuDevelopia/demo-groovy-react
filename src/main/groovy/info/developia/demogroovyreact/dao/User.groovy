@@ -1,20 +1,19 @@
 package info.developia.demogroovyreact.dao
 
-import groovy.transform.ToString
 import groovy.transform.builder.Builder
 
 import javax.persistence.*
 
 @Entity
 @Builder
-@ToString(includeNames = true, includePackage = false)
-class Game {
+class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id
-    String name
-    @ManyToOne
-    User user
-
+    String username
+    String password
+    String email
+    @OneToMany(mappedBy = "user")
+    Set<Game> games
 }
