@@ -1,5 +1,6 @@
 package info.developia.demogroovyreact.dao
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import groovy.transform.ToString
 import groovy.transform.builder.Builder
 

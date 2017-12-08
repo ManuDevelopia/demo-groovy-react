@@ -1,5 +1,6 @@
 package info.developia.demogroovyreact.dao
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import groovy.transform.builder.Builder
 
 import javax.persistence.*
@@ -12,6 +13,7 @@ class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id
     String username
+    @JsonIgnore
     String password
     String email
     @OneToMany(mappedBy = "user")

@@ -4,7 +4,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import client from './client';
+
 import GameList from './games/game-list';
+import CreateDialog from './games/game-create';
 // end::vars[]
 
 // tag::app[]
@@ -12,7 +14,7 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {games: []};
+        this.state = {games: [], attributes: []};
     }
 
     componentDidMount() {
@@ -23,8 +25,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <GameList games={this.state.games}/>
-        )
+            <div>
+                <GameList games={this.state.games}/>
+                <CreateDialog attributes={this.state.attributes}/>
+            </div>
+    )
     }
 }
 // end::app[]

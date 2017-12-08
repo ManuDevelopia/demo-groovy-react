@@ -7,7 +7,7 @@ class Game extends React.Component{
     render() {
         return (
             <tr>
-                <td className={styles.game}><div>{this.props.game.name} - {this.props.game.user.username}</div></td>
+                <td className={styles.game}><div>{this.props.game.name}</div></td>
             </tr>
         )
     }

@@ -9,14 +9,15 @@ class GameList extends React.Component{
             <Game key={game._links.self.href} game={game}/>
         );
         return (
-            <table>
-                <tbody>
-                <tr>
-                    <th>Name</th>
-                </tr>
-                {games}
-                </tbody>
-            </table>
+            <div>
+                <h2>Game List</h2>
+                <table>
+                    <tbody>
+                        <tr><th>Name</th></tr>
+                        {games}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }
